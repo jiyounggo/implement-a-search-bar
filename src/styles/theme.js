@@ -5,6 +5,7 @@ const theme = {
     pc: "(min-width: 1100px)",
     mobile: "(min-width: 768px)",
   },
+  background: "#CAE9FF",
 };
 
 export { theme };
