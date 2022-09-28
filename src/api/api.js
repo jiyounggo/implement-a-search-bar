@@ -8,7 +8,7 @@ const get = async (query) => {
   if (!res.ok) {
     throw new Error("검색 결과를 가져오는데 실패 했습니다.");
   }
-
+  console.info("calling api");
   return res.json();
 };
 
