@@ -16,7 +16,6 @@ const SearchBar = () => {
 
     const newTimer = setTimeout(async () => {
       if (search === '') {
-        // console.log('첫번째');
         dispatch({ type: 'searchSlice/update', payload: [] });
         return;
       }
@@ -26,15 +25,6 @@ const SearchBar = () => {
     setTimer(newTimer);
   };
 
-  // const onKeyDown = (e) =>{
-  //   if(results.length>0){
-  //     switch (e.key){
-  //       case ArrowDown:
-
-  //     }
-  //   }
-  // }
-
   return (
     <div style={{ marginTop: '4rem', textAlign: 'center' }}>
       <input ref={inputRef} type='text' onChange={inputChange} />
@@ -43,7 +33,7 @@ const SearchBar = () => {
         {inputRef.current?.value?.length > 0 && results.length < 1 ? (
           <NoResult />
         ) : (
-          results.map((result) => (
+          results['편모'].map((result) => (
             <Results
               key={result.sickCd}
               result={result}

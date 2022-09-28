@@ -10,8 +10,8 @@ const searchSlice = createSlice({
   name: 'searchSlice',
   initialState: {
     results: [],
-    search: [],
-    history: [],
+    // search: [],
+    // history: [],
     status: 'Loading',
   },
   reducers: {
@@ -24,7 +24,7 @@ const searchSlice = createSlice({
       state.status = 'Loading';
     });
     builder.addCase(getSearchThunk.fulfilled, (state, action) => {
-      state.results = action.payload.data;
+      state.results = action.payload;
       state.status = 'Complete';
     });
     builder.addCase(getSearchThunk.rejected, (state, action) => {
