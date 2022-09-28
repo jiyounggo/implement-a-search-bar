@@ -12,7 +12,7 @@ function useSearchApi(searchValue) {
       setSearchedData(data);
       setLoading(false);
     };
-    fetchData();
+    if (searchValue) fetchData();
   }, [searchValue]);
 
   return [searchedData, loading];
