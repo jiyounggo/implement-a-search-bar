@@ -1,29 +1,27 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import Results from './Results';
-import axios from 'axios';
 import NoResult from './NoResult';
+import { useDispatch, useSelector } from 'react-redux';
+import { getSearchThunk } from '../modules/searchSlice';
 
 const SearchBar = () => {
-  const [results, setResults] = useState([]);
+  const dispatch = useDispatch();
+  const results = useSelector((state) => state.search.results);
+  const inputRef = useRef();
   const [timer, setTimer] = useState(null);
 
   const inputChange = (e) => {
-    const search = e.target.value;
-
+    const search = inputRef.current.value;
     clearTimeout(timer);
 
     const newTimer = setTimeout(async () => {
-      const result = await axios.get(`http://localhost:4000/sick?q=${search}`);
+      console.info('calling api 😎');
       if (search === '') {
-        setResults([]);
+        // console.log('첫번째');
+        dispatch({ type: 'searchSlice/update', payload: [] });
         return;
       }
-      if (e.target.value !== '' && result.data.length < 1) {
-        setResults({ flag: true });
-        return;
-      }
-      setResults(result.data);
-      console.info('calling api', result.data);
+      dispatch(getSearchThunk(search));
     }, 500);
 
     setTimer(newTimer);
@@ -31,10 +29,10 @@ const SearchBar = () => {
 
   return (
     <div style={{ marginTop: '4rem', textAlign: 'center' }}>
-      <input type='text' onChange={inputChange} />
+      <input ref={inputRef} type='text' onChange={inputChange} />
       <button>검색</button>
       <ul>
-        {results.flag === true ? (
+        {inputRef.current?.value?.length > 0 && results.length < 1 ? (
           <NoResult />
         ) : (
           results.map((result) => (
