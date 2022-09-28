@@ -36,4 +36,5 @@ export const List = styled.li`
   &:hover {
     background-color: lightgray;
   }
+  background-color: ${(props) => (props.isFocus ? "lightgray" : "#fff")};
 `;
