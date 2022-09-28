@@ -15,7 +15,6 @@ const SearchBar = () => {
     clearTimeout(timer);
 
     const newTimer = setTimeout(async () => {
-      console.info('calling api 😎');
       if (search === '') {
         // console.log('첫번째');
         dispatch({ type: 'searchSlice/update', payload: [] });
@@ -27,6 +26,15 @@ const SearchBar = () => {
     setTimer(newTimer);
   };
 
+  // const onKeyDown = (e) =>{
+  //   if(results.length>0){
+  //     switch (e.key){
+  //       case ArrowDown:
+
+  //     }
+  //   }
+  // }
+
   return (
     <div style={{ marginTop: '4rem', textAlign: 'center' }}>
       <input ref={inputRef} type='text' onChange={inputChange} />
@@ -36,7 +44,11 @@ const SearchBar = () => {
           <NoResult />
         ) : (
           results.map((result) => (
-            <Results key={result.sickCd} result={result} />
+            <Results
+              key={result.sickCd}
+              result={result}
+              inputRef={inputRef.current.value}
+            />
           ))
         )}
       </ul>
