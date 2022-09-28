@@ -1,8 +1,8 @@
 import React, { useCallback, useState } from "react";
 import useDebounce from "../../../hooks/useDebounce";
 import useSearchApi from "../../../hooks/useSearchApi";
-import { InputWrapper, SearchInput } from "./Input.style";
 import SearchedList from "./SearchedLists";
+import { InputWrapper, SearchInput } from "./Input.style";
 
 function Input() {
   const [searchValue, setSearchValue] = useState("");
@@ -24,6 +24,7 @@ function Input() {
         onBlur={() => setIsInputFocused(false)}
       />
       <SearchedList
+        searchValue={searchValue}
         searchedData={searchedData}
         isInputFocused={isInputFocused}
         loading={loading}
