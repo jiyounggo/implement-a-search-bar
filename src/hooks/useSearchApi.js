@@ -14,7 +14,7 @@ function useSearchApi(searchValue) {
           ? setSearchedData(data.slice(0, 7))
           : setSearchedData(data);
       } catch (e) {
-        throw new Error(e);
+        console.error(e);
       } finally {
         setLoading(false);
       }

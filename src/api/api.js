@@ -5,6 +5,9 @@ const get = async (query) => {
       "Content-Type": "application/json",
     },
   });
+  if (!res.ok) {
+    throw new Error("검색 결과를 가져오는데 실패 했습니다.");
+  }
 
   return res.json();
 };
