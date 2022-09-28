@@ -1,7 +1,8 @@
 import React from "react";
+import { checkWordBold } from "../../../utils/utils";
 import { List, Ul } from "./Input.style";
 
-function SearchedLists({ searchedData, isInputFocused, loading }) {
+function SearchedLists({ searchValue, searchedData, isInputFocused, loading }) {
   return (
     searchedData.length > 0 &&
     isInputFocused && (
@@ -9,9 +10,9 @@ function SearchedLists({ searchedData, isInputFocused, loading }) {
         {loading ? (
           <List>검색중...</List>
         ) : (
-          searchedData.map((data) => (
-            <List key={data.sickCd}>{data.sickNm}</List>
-          ))
+          searchedData.map((data) =>
+            checkWordBold(data.sickCd, searchValue, data.sickNm)
+          )
         )}
       </Ul>
     )
