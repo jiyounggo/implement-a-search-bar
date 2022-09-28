@@ -12,7 +12,8 @@ function Input() {
 
   const handleChange = useCallback((e) => {
     setSearchValue(e.target.value);
-  });
+  }, []);
+
   return (
     <InputWrapper>
       <SearchInput
@@ -25,6 +26,7 @@ function Input() {
       <SearchedList
         searchedData={searchedData}
         isInputFocused={isInputFocused}
+        loading={loading}
       />
     </InputWrapper>
   );
