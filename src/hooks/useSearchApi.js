@@ -7,13 +7,17 @@ function useSearchApi(searchValue) {
 
   useEffect(() => {
     const fetchData = async () => {
-      setLoading(true);
-      const data = await get(searchValue);
-      data.length >= 7
-        ? setSearchedData(data.slice(0, 7))
-        : setSearchedData(data);
-
-      setLoading(false);
+      try {
+        setLoading(true);
+        const data = await get(searchValue);
+        data.length >= 7
+          ? setSearchedData(data.slice(0, 7))
+          : setSearchedData(data);
+      } catch (e) {
+        throw new Error(e);
+      } finally {
+        setLoading(false);
+      }
     };
     searchValue ? fetchData() : setSearchedData([]);
   }, [searchValue]);
