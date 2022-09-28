@@ -1,15 +1,13 @@
-import React, { useCallback, useState } from "react";
-import useSearchApi from "../../hooks/useSearchApi";
-import Input from "./serachBar/Input";
+import React from "react";
+import { Container } from "./Main.style";
+import Input from "./searchBar/Input";
 
 function Main() {
-  const [searchValue, setSearchValue] = useState("");
-  const [searchedData, loading] = useSearchApi(searchValue);
-  const handleChange = useCallback((e) => {
-    setSearchValue(e.target.value);
-  });
-
-  return <Input searchValue={searchValue} handleChange={handleChange} />;
+  return (
+    <Container>
+      <Input />
+    </Container>
+  );
 }
 
 export default Main;
