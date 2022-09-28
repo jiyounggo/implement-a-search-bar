@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { MAX_DATA } from "../utils/constant";
 import { get } from "../api/api";
 
 function useSearchApi(searchValue) {
@@ -10,8 +11,8 @@ function useSearchApi(searchValue) {
       try {
         setLoading(true);
         const data = await get(searchValue);
-        data.length >= 7
-          ? setSearchedData(data.slice(0, 7))
+        data.length >= MAX_DATA
+          ? setSearchedData(data.slice(0, MAX_DATA))
           : setSearchedData(data);
       } catch (e) {
         console.error(e);
