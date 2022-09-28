@@ -9,10 +9,13 @@ function useSearchApi(searchValue) {
     const fetchData = async () => {
       setLoading(true);
       const data = await get(searchValue);
-      setSearchedData(data);
+      data.length >= 7
+        ? setSearchedData(data.slice(0, 7))
+        : setSearchedData(data);
+
       setLoading(false);
     };
-    if (searchValue) fetchData();
+    searchValue ? fetchData() : setSearchedData([]);
   }, [searchValue]);
 
   return [searchedData, loading];
