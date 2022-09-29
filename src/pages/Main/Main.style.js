@@ -1,18 +1,18 @@
-import { styled } from '@mui/material/styles';
-import Paper from '@mui/material/Paper';
-import Box from '@mui/material/Box';
+import styled from 'styled-components';
 
+export const Container = styled.div`
+  margin: 0 auto;
+`;
 
-// mui tutorial
-export const Item = styled(Paper)(({ theme }) => ({
-  backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
-  ...theme.typography.body2,
-  padding: theme.spacing(1),
-  textAlign: 'center',
-  color: theme.palette.text.secondary,
-}));
+export const SearchSection = styled.div`
+  width: 100%;
+  text-align: center;
+  background-color: #cae9ff;
+  padding: 80px 0 160px;
+`;
 
-export const Container = styled(Box)(({theme}) => ({
-  margin: "0 auto",
-  maxWidth: "1000px",
-}))
+export const PosterContainer = styled.div`
+  width: 100%;
+  text-align: center;
+  margin-bottom: 40px;
+`;
