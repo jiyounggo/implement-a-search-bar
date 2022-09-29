@@ -25,7 +25,6 @@ const Search = () => {
       let result = await getSearchResults(search);
       result = result.slice(0, 10);
       if (search === '') {
-        // setResults({});
         return;
       }
       if (e.target.value !== '' && result.length < 1) {
@@ -41,8 +40,6 @@ const Search = () => {
 
     setTimer(newTimer);
   };
-
-  // console.log(results);
 
   return (
     <Container>
@@ -62,16 +59,6 @@ const Search = () => {
         placeholder='질환명을 입력해 주세요'
       />
 
-      {/* <button>검색</button> */}
-      {/* <ul>
-        {results.flag === true ? (
-          <NoResult />
-        ) : (
-          results[searchKeyword].map((result) => (
-            <Results key={result.sickCd} result={result} />
-          ))
-        )}
-      </ul> */}
       <ul>
         {toggle === true ? (
           <NoResult />
